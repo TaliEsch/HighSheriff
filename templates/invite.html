@@ -1,0 +1,92 @@
+{% extends 'admin.html' %}
+{% block headerBlock %}
+<title>Invited Applicants</title>
+<link rel="stylesheet" href="/static/navbar.css">
+<link rel="stylesheet" href="/static/admin.css">
+{% endblock %}
+{% block tableBlock %}
+  <main>
+    <article id="admin-intro">
+      <h2>Invited</h2>
+      <p>
+        You can see all the applicants who have been
+        invited to the in-person interview below:
+      </p>
+    </article>
+    <section class="applications-container">
+      <div style="overflow-x: auto;">
+        <table class="applications-table">
+          <thead>
+            <td class="id">App ID</td>
+            <td class="firstName">First Name</td>
+            <td class="surname">Surname</td>
+            <td class="email">Email Address</td>
+            <td class="ans1">Answer 1</td>
+            <td class="ans2">Answer 2</td>
+            <td class="ans3">Answer 3</td>
+            <td class="ans4">Answer 4</td>
+            <td class="ans5">Answer 5</td>
+            <!-- etc. -->
+            <td class="status">Status</td>
+            <td class="options">Options</td>
+          </thead>
+          <tbody>
+          {% for invite in invited %}
+            <tr>
+              <td class="id fulltext">{{invite[4]}}</td>
+              <td class="firstName fulltext">{{invite[1]}}</td>
+              <td class="surname fulltext">{{invite[2]}}</td>
+              <td class="email fulltext">{{invite[3]}}</td>
+              <td class="ans1 fulltext">{{invite[6]}}</td>
+              <td class="ans2 fulltext">{{invite[7]}}</td>
+              <td class="ans3 fulltext">{{invite[8]}}</td>
+              <td class="ans4 fulltext">{{invite[9]}}</td>
+              <td class="ans5 fulltext">{{invite[10]}}</td>
+              <td class="status fulltext">{{invite[11]}}</td>
+              <!-- etc. -->
+              <td>
+                <button class="btn-table btn-accept">Accept</button>
+                <button class="btn-table btn-decline">Decline</button>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="applications-container">
+      <div style="overflow-x: auto;">
+        <table class="applications-table">
+          <thead>
+            <td class="id">App ID</td>
+            <td class="firstName">First Name</td>
+            <td class="surname">Surname</td>
+            <td class="email">Email Address</td>
+            <td class="video">Video</td>
+            <!-- etc. -->
+            <td class="status">Status</td>
+            <td class="options">Options</td>
+          </thead>
+          <tbody>
+          {% for video in videos %}
+            <tr>
+              <td class="id fulltext">{{video[4]}}</td>
+              <td class="firstName fulltext">{{video[1]}}</td>
+              <td class="surname fulltext">{{video[2]}}</td>
+              <td class="email fulltext">{{video[3]}}</td>
+              <td class="video fulltext"><p class="modal-link">{{video[6]}}</p></td>
+              <!-- etc. -->
+              <td class="status fulltext">{{video[7]}}</td>
+              <td class="options">
+                <button class="btn-table btn-accept btn-video">Accept</button>
+                <button class="btn-table btn-decline btn-video">Decline</button>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="static/javascript/fullTextView.js"></script>
+{% endblock %}

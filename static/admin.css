@@ -1,0 +1,304 @@
+main {
+  margin-top: 2em;
+  background-color: #eee;
+  padding: 2em;
+  font-size: 1.4rem;
+}
+
+/* TABLE SELECTOR */
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  margin: 1em 0;
+  margin-left: 0.6em;
+}
+
+#table-nav-btn {
+  padding: 0.8em 2em;
+  color: white;
+  background-color: #482ff7;
+  border: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 120%;
+  overflow: auto;
+  box-shadow: 3px 3px 10px #444;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  z-index: 20;
+}
+
+.dropdown-content li {
+  display: block;
+  background-color: #ccc;
+  color: black;
+  padding: 1em;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdown-content li:hover {
+  background-color: #bbb;
+}
+
+/* ADMIN INTRO SECTION */
+
+#admin-intro {
+  padding-bottom: 2em;
+}
+
+#admin-intro h2 {
+  padding-bottom: 0.6em;
+}
+
+/* TABLES */
+
+.applications-container {
+  margin-bottom: 3em;
+}
+
+.applications-table {
+  table-layout: fixed;
+  overflow-x: auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.applications-table .id {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 5em;
+}
+
+.applications-table .firstName {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: auto;
+}
+
+.applications-table .surname {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: auto;
+}
+
+.applications-table .email {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: auto;
+}
+
+.applications-table .ans1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+}
+
+.applications-table .ans2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+}
+
+.applications-table .ans3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+}
+
+.applications-table .ans4 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+}
+
+.applications-table .ans5 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+}
+
+.applications-table .video {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+}
+
+.applications-table .options {
+  width: auto;
+}
+
+.applications-table td, #applications-table thead {
+  border: 1px solid #aaa;
+  padding: 8px;
+}
+
+.applications-table tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+.applications-table tbody tr:hover {
+  background-color: #ccc;
+}
+
+.applications-table thead {
+  text-align: left;
+  background-color: #482ff7;
+  color: white;
+}
+
+/* BUTTONS */
+
+.btn-table {
+  width: fit-content;
+  padding: 6px;
+  margin: 2px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.btn-accept, .btn-invite {
+  color: black;
+  background-color: #ccc;
+  border: 2px solid #33cc33;
+}
+
+.btn-accept:hover, .btn-invite:hover {
+  color: white;
+  background-color: #33cc33;
+}
+
+.btn-decline, .btn-close {
+  color: black;
+  background-color: #ccc;
+  border: 2px solid #ff3300;
+}
+
+.btn-decline:hover, .btn-close:hover {
+  color: white;
+  background-color: #ff3300;
+}
+
+.btn-hold {
+  color: black;
+  background-color: #ccc;
+  border: 2px solid #6699ff;
+}
+
+.btn-hold:hover {
+  color: white;
+  background-color: #6699ff;
+}
+
+.btn-shortlist {
+  color: black;
+  background-color: #ccc;
+  border: 2px solid #ff9933;
+}
+
+.btn-shortlist:hover {
+  color: white;
+  background-color: #ff9933;
+}
+
+.btn-export {
+  color: black;
+  background-color: #ccc;
+  border: 2px solid #777;
+}
+
+.btn-export:hover {
+  color: white;
+  background-color: #777;
+}
+
+/* EXPANDING TABLE VIEW */
+
+.fulltextView{
+  text-overflow: initial !important;
+  word-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* MODAL LINK */
+
+.modal-link {
+  cursor: pointer;
+  color: #482ff7;
+}
+
+.modal-link:hover {
+  text-decoration: underline;
+}
+
+/* MODAL */
+
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  padding-top: 7em;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+#modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  margin-bottom: 2em;
+  padding: 3em;
+  border: 1px solid #888;
+  width: 55%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modal-header {
+  margin-bottom: 1em;
+}
+
+#modal-video {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  margin-bottom: 2em;
+}
+
+/* If screen width goes below 768px, the table
+becomes scrollable so the content isn't cut out. */
+
+@media only screen and (max-width: 768px) {
+  .applications-table {
+    width: 60em;
+  }
+}

@@ -1,0 +1,147 @@
+.page-name {
+  display: flex;
+  padding-top: 12rem;
+  padding-bottom: 10rem;
+  background-image: url("images/MainPageImageCroppedVer.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.page-name-text-container {
+  opacity: 80%;
+  justify-content: center;
+  display: flex;
+  border-width: 20px;
+  background-color: whitesmoke;
+  padding: 2rem;
+}
+
+.page-name-text {
+  opacity: 100%;
+  font-size: 3rem;
+}
+
+.charity-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.charity {
+  margin-top: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.charity-stats {
+  margin-top: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.charity-content {
+  margin: 0 5rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  justify-self: left;
+  align-items: stretch;
+}
+
+.charity-title {
+  font-size: 3rem;
+  align-items: flex-start;
+}
+
+.charity-info {
+  font-size: 2rem;
+}
+
+.charity-image {
+  height: auto;
+  width: 260px;
+  transition: 0.2s;
+}
+
+.splitter {
+  padding-top: 10rem;
+}
+
+.contact-info {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #777777;
+  display: flex;
+  flex-direction: column;
+}
+
+.charity-image:hover {
+  width: 280px;
+}
+
+h1.charity-title{
+  padding-bottom: 2rem;
+}
+
+h1.charity-title-gwent{
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+
+.location {
+  margin-left: 0;
+  margin-right: 30rem;
+}
+
+.social-media {
+  display: flex;
+  flex-direction: row;
+  font-size: 2rem;
+  margin: 0 0.2rem;
+}
+
+#map{
+  margin: 2rem;
+  height: 400px;
+}
+
+.my-leaflet-map-container img {
+  max-height: none;
+}
+
+/* On screens that are 600px or less*/
+@media screen and (max-width: 600px) {
+  .charity-image {
+    width: 130px;
+  }
+
+  .charity-image:hover {
+    width: 140px;
+  }
+}
+
+.charity-info.title{
+  font-size: 4rem;
+}
+
+.chart-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-heading {
+  font-size: 30px
+}
+
+.chart-text {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 20px
+}

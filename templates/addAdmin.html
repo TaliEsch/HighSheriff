@@ -1,0 +1,43 @@
+{% extends 'admin.html' %}
+{% block headerBlock %}
+<title>Add Admin</title>
+<link rel="stylesheet" href="static/navbar.css">
+<link rel="stylesheet" href="static/admin.css">
+<link rel="stylesheet" href="static/addAdmin.css">
+{% endblock %}
+{% block mainBlock %}
+<main>
+  <nav class="dropdown">
+    <button id="table-nav-btn">Navigate Tables</button>
+    <ul class="dropdown-content">
+      <li class="table-link" id="open" onclick="location.href = '/admin'">Needs Review</li>
+      <li class="table-link" id="accepted" onclick="location.href = '/accept'">Accepted</li>
+      <li class="table-link" id="declined" onclick="location.href = '/decline'">Declined</li>
+      <li class="table-link" id="held" onclick="location.href = '/hold'">Held</li>
+      <li class="table-link" id="shortlisted" onclick="location.href = '/shortlist'">Shortlisted</li>
+      <li class="table-link" id="contact-adminview" onclick="location.href='/contactadmin'">Contact Us Messages</li>
+      <li class="table-link" id="add-admin" onclick="location.href='/addadmin'">Add Admin Account</li>
+    </ul>
+  </nav>
+  <article id="admin-intro">
+    <h2>Add Admin</h2>
+    <p>
+      You can add another admin account on this page:
+    </p>
+    <form id="add-admin-form" onsubmit="return sendAdmin()" method="post">
+      <label class="username">
+        Please enter your username:
+        <input id="username" type="text" name="username" placeholder="Username" required></input>
+      </label>
+      <label class="password">
+        Please enter your Password:
+        <input id="password" type="password" name="password" placeholder="Password" required></input>
+      </label>
+      <div class="buttoncontainer">
+        <button type="submit">Add</button>
+      </div>
+    </form>
+  </article>
+  <span id="confirmation"></span>
+</main>
+{% endblock %}

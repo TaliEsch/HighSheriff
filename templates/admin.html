@@ -1,0 +1,119 @@
+{% extends 'navbar.html' %}
+{% block headerBlock %}
+<title>Admin</title>
+<link rel="stylesheet" href="static/navbar.css">
+<link rel="stylesheet" href="static/admin.css">
+{% endblock %}
+{% block mainBlock %}
+  <main>
+    <nav class="dropdown">
+      <button id="table-nav-btn">Navigate Tables</button>
+      <ul class="dropdown-content">
+        <li class="table-link" id="open" onclick="location.href = '/admin'">Needs Review</li>
+        <li class="table-link" id="invited" onclick="location.href = '/invite'">Invited</li>
+        <li class="table-link" id="accepted" onclick="location.href = '/accept'">Accepted</li>
+        <li class="table-link" id="declined" onclick="location.href = '/decline'">Declined</li>
+        <li class="table-link" id="held" onclick="location.href = '/hold'">Held</li>
+        <li class="table-link" id="shortlisted" onclick="location.href = '/shortlist'">Shortlisted</li>
+        <li class="table-link" id="contact-adminview" onclick="location.href='/contactadmin'">Contact Us Messages</li>
+        <li class="table-link" id="add-admin" onclick="location.href='/addadmin'">Add Admin Account</li>
+      </ul>
+    </nav>
+    {% block tableBlock %}
+      <article id="admin-intro">
+        <h2>Admin</h2>
+        <p>
+          You can choose to accept, decline, hold, shortlist or
+          export any application below.
+        </p>
+      </article>
+      <section class="applications-container">
+        <div style="overflow-x: auto;">
+          <table class="applications-table">
+            <thead>
+              <td class="id">App ID</td>
+              <td class="firstName">First Name</td>
+              <td class="surname">Surname</td>
+              <td class="email">Email Address</td>
+              <td class="ans1">Answer 1</td>
+              <td class="ans2">Answer 2</td>
+              <td class="ans3">Answer 3</td>
+              <td class="ans4">Answer 4</td>
+              <td class="ans5">Answer 5</td>
+              <!-- etc. -->
+              <td class="options">Options</td>
+            </thead>
+            <tbody>
+            {% for application in applications %}
+              <tr>
+                <td class="id fulltext">{{application[4]}}</td>
+                <td class="firstName fulltext">{{application[1]}}</td>
+                <td class="surname fulltext">{{application[2]}}</td>
+                <td class="email fulltext">{{application[3]}}</td>
+                <td class="ans1 fulltext">{{application[6]}}</td>
+                <td class="ans2 fulltext">{{application[7]}}</td>
+                <td class="ans3 fulltext">{{application[8]}}</td>
+                <td class="ans4 fulltext">{{application[9]}}</td>
+                <td class="ans5 fulltext">{{application[10]}}</td>
+                <!-- etc. -->
+                <td class="options">
+                  <button value="Invited" class="btn-table btn-invite">Invite</button>
+                  <button value="Declined" class="btn-table btn-decline">Decline</button>
+                  <button value="Holding" class="btn-table btn-hold">Hold</button>
+                  <button value="Shortlisted" class="btn-table btn-shortlist">Shortlist</button>
+                  <button class="btn-table btn-export">Export</button>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="applications-container">
+        <div style="overflow-x: auto;">
+          <table class="applications-table">
+            <thead>
+              <td class="id">App ID</td>
+              <td class="firstName">First Name</td>
+              <td class="surname">Surname</td>
+              <td class="email">Email Address</td>
+              <td class="video">Video</td>
+              <!-- etc. -->
+              <td class="options">Options</td>
+            </thead>
+            <tbody>
+            {% for video in videos %}
+              <tr>
+                <td class="id fulltext">{{video[4]}}</td>
+                <td class="firstName fulltext">{{video[1]}}</td>
+                <td class="surname fulltext">{{video[2]}}</td>
+                <td class="email fulltext">{{video[3]}}</td>
+                <td class="video fulltext"><p class="modal-link">{{video[6]}}</p></td>
+                <!-- etc. -->
+                <td class="options">
+                  <button value="Invited" class="btn-table btn-invite btn-video">Invite</button>
+                  <button value="Declined" class="btn-table btn-decline btn-video">Decline</button>
+                  <button value="Holding" class="btn-table btn-hold btn-video">Hold</button>
+                  <button value="Shortlisted" class="btn-table btn-shortlist btn-video">Shortlist</button>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    {% endblock %}
+    <article id="modal">
+      <div id="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-header"></h3>
+        <video id="modal-video" controls></video>
+      </div>
+    </article>
+  </main>
+  <script src="static/javascript/changeStatus.js"></script>
+  <script src="static/javascript/exportApplication.js"></script>
+  <script src="static/javascript/hamburger_menu.js"></script>
+  <script src="static/javascript/fullTextView.js"></script>
+  <script src="static/javascript/showModal.js"></script>
+{% endblock %}

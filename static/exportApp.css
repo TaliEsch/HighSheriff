@@ -1,0 +1,17 @@
+main {
+  margin: 5em;
+}
+
+@media print {
+  @page {
+    margin-bottom: 0;
+  }
+
+  main {
+    margin: 3em;
+  }
+
+  .not-printed {
+    display: none !important;
+  }
+}

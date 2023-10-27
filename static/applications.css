@@ -1,0 +1,76 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: #eee;
+  padding: 2em;
+  padding-top: 5em;
+  font-size: 1.4rem;
+}
+
+.form-container {
+  max-width: 25vw;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  text-align: left;
+  margin-bottom: 0.4em;
+  width: 14em;
+}
+
+input, textarea {
+  margin-bottom: 1.5em;
+}
+
+label, input, textarea {
+  justify-content: center;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 15em;
+  min-height: 8em;
+  font-family: 'Roboto', sans-serif;
+  padding: 1em;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
+
+#application-intro {
+  flex: 0 0 100%;
+}
+
+#video-section li {
+  list-style-type: circle;
+}
+
+#divider {
+  width: 1px;
+  height: 800px;
+  background-color: #aaa;
+}
+
+@media only screen and (max-width: 1200px) {
+  main {
+    flex-direction: column;
+  }
+
+  #video-section {
+    margin-top: 2em;
+  }
+
+  .form-container {
+    max-width: 80vw;
+  }
+
+  #divider {
+    width: 500px;
+    height: 1px;
+    margin: 3em auto;
+  }
+}

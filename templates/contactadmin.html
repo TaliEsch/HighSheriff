@@ -1,0 +1,37 @@
+{% extends 'admin.html' %}
+{% block headerBlock %}
+<title>View Contacts</title>
+<link rel="stylesheet" href="static/navbar.css">
+<link rel="stylesheet" href="static/admin.css">
+{% endblock %}
+{% block tableBlock %}
+  <main>
+    <article id="admin-intro">
+      <h2>Contact Messages</h2>
+      <p>
+        You can see all the contact messages below:
+      </p>
+    </article>
+    <section id="applications-container">
+    <div style="overflow-x: auto;">
+      <table class="applications-table">
+        <thead>
+          <td>Con ID</td>
+          <td>Full Name</td>
+          <td>Email Address</td>
+          <td>Message</td>
+        </thead>
+        <tbody>
+        {% for contact in contacted %}
+          <tr>
+            <td class="id">{{contact[0]}}</td>
+            <td class="fullname">{{contact[1]}}</td>
+            <td class="email">{{contact[2]}}</td>
+            <td class="message">{{contact[3]}}</td>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    </section>
+  </main>
+{% endblock %}

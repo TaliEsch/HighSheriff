@@ -1,0 +1,54 @@
+{% extends 'navbar.html' %}
+{% block headerBlock %}
+  <title>Donations</title>
+  <link rel="stylesheet" href="static/donations.css">
+{%endblock%}
+{% block mainBlock%}
+<main>
+  <section id="charity-selection">
+    {% for charity in charities %}
+    <!-- Cards to display each charity -->
+    <!-- Displays charity name, description and location -->
+    <div class="card">
+      <h2 class="charity-name">{{charity[2]}}</h2>
+      <p class="charity-desc">{{charity[4]}}</p>
+      <small class="charity-loc">{{charity[5]}}</small>
+    </div>
+    {% endfor %}
+  </section>
+  <section id="donations">
+    <div id="donations-container">
+      <h1>Donation Form</h1>
+      <form method="post" id="donation-form">
+
+        <label for="first_name">First Name</label><br>
+        <input id="firstName" type="text" name="firstName"><br>
+
+        <label for="last_name">Last Name</label><br>
+        <input id="lastName" type="text" name="lastName"><br>
+
+        <label for="amount">Donation Amount</label><br>
+        <input id="amount" type="number" name="amount" min="0.00" max="10000.00" step="0.01"><br>
+
+        <label for="card_name">Name On Card</label><br>
+        <input id="cardName" type="text" name="cardName"><br>
+
+        <label for="card_number">Card Number</label><br>
+        <input id="cardNumber" type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX"><br>
+
+        <label for="expiry_date">Card Expiry Date</label><br>
+        <input id="expiryDate" type="date" name="expiryDate"><br>
+
+        <label for="cvv">CVV Number (Last 3 digits on back of card)</label><br>
+        <input id="cvv" type="text" pattern="\d*" name="cvv" placeholder="XXX" maxlength="3"><br>
+
+        <label for="donation_notes">Donation Notes</label><br>
+        <textarea id="donationNotes" name="donationNotes" rows="15" cols="42" maxlength="555"></textarea><br>
+
+        <button type="submit" name="Submit">Submit</button>
+
+      </form>
+    </div>
+  </section>
+</main>
+{%endblock%}

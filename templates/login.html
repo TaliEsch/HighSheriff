@@ -1,0 +1,39 @@
+{% extends 'flashNotification.html' %}
+{% block headerBlock %}
+<title>Login</title>
+<link href="static/about.css" rel="stylesheet">
+<link href="static/login.css" rel="stylesheet">
+{% endblock %}
+
+{% block mainBlock%}
+  <body>
+  <!-- Page name used as spacer for main content -->
+  <section class="page-name">
+    <div class="page-name-text-container">
+      <h1 class="page-name-text">Login</h1>
+    </div>
+  </section>
+  <!-- Form for login -->
+  <section id="login-forms">
+    <form id="form-fields" method="get" action="/userReg">
+        <button type="submit">User Registration</input>
+    </form>
+  </section>
+  <section id="login-form">
+    <form id="form-fields"  name="loginForm" onsubmit="return loginValidation()" action="/login" method="POST" >
+      <p>
+        <label for="username">Username:</label>
+        <input id="username" name="username" type="text" placeholder="Username" accept="">
+      </p>
+      <p>
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password" placeholder="Password">
+      </p>
+      <p>
+        <input type="submit" value="Submit">
+      </p>
+    </form>
+  </section>
+  </body>
+{%endblock%}
+</html>

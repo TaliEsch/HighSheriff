@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/exportApp.css">
+  <title>Applicant Export</title>
+</head>
+<body>
+  <main>
+    <p>Name: {{name}} {{surname}}</p>
+    <p>Email: {{email}}</p>
+    <p>
+      This is being sent to you because the applicant has sent the request to
+      the wrong authority. Please consider their application when discussing
+      charitable funding. <br>You may also be interested in the following
+      information which they provided to us to support their application:
+    </p>
+    <h4>Question 1: What is the name of your charity?</h4>
+    <p>{{answer1}}</p>
+    <h4>Question 2: What is your charity involved with?</h4>
+    <p>{{answer2}}</p>
+    <h4>Question 3: Why do you think your charity should be given funding?</h4>
+    <p>{{answer3}}</p>
+    <h4>Question 4: Where is your charity based?</h4>
+    <p>{{answer4}}</p>
+    <h4>Question 5: How many people are working for your charity currently?</h4>
+    <p>{{answer5}}</p>
+    <button onclick="print()" class="not-printed">Print / Save as a PDF</button>
+    <button class="btn-table not-printed" onclick="location.href='/admin'" type="button">
+      Back To Admin
+    </button>
+  </main>
+</body>
+</html>

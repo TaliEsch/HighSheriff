@@ -1,0 +1,400 @@
+{% extends 'flashNotification.html' %}
+{% block headerBlock %}
+<title>About</title>
+<link rel="stylesheet" href="static/about.css">
+<link rel="stylesheet" href="static/chart.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+{% endblock %}
+{% block mainBlock%}
+<main>
+  <section class="page-name">
+    <div class="page-name-text-container">
+      <h1 class="page-name-text">Who we support</h1>
+    </div>
+  </section>
+  <div class="charity-container">
+    <section class="charity">
+        <img alt="" class="charity-image"
+             src="static\images\high-sheriff-logo.PNG">
+
+      <article class="charity-content">
+        <h1 class="charity-title">The Gwent High Sheriffs' Community Fund</h1>
+        <h2 class="charity-info">The Gwent High Sheriffs' Community Fund aims to provide a safer and better quality of life for the people of Gwent by supporting community-based initiatives and projects for young people that help reduce crime and anti-social behaviour.</h2>
+      </article>
+    </section>
+    <section class="charity">
+      <img alt="" class="charity-image"
+           src="static\images\barnardo_logo.png">
+
+      <article class="charity-content">
+        <h1 class="charity-title">Barnardo's</h1>
+        <h2 class="charity-info">Barnardos is a British charity founded by
+  Thomas John Barnardo in 1866, to care for vulnerable children.</h2>
+      </article>
+    </section>
+    <section class="charity">
+      <img alt="" class="charity-image"
+           src="static\images\heart_logo.png">
+      <article class="charity-content">
+        <h1 class="charity-title">British Heart Foundation</h1>
+        <h2 class="charity-info">Funds medical research related to
+heart and circulatory diseases and their risk factors.</h2>
+      </article>
+    </section>
+  </div>
+  <div class="splitter">
+  </div>
+  <section class="page-name">
+    <div class="page-name-text-container">
+      <h1 class="page-name-text">Communities we support</h1>
+    </div>
+  </section>
+
+  <div class="Where we work">
+      <section class="charity">
+        <h1 class="charity-title-gwent">Our supported charities around Gwent: </h1>
+      </section>
+  </div>
+
+  <div id="map"></div>
+
+  <div class="splitter">
+  </div>
+  <section class="page-name">
+    <div class="page-name-text-container">
+      <h1 class="page-name-text">Information about Gwent</h1>
+    </div>
+  </section>
+
+  <div>
+    <article>
+      <section class="charity-stats">
+        <h2 class="charity-info title">Graphs For Impact</h2>
+        <!--Joseph-->
+        <div class = "chart-info">
+          <h1 class = "chart-title">Funding Provided to Charities</h1>
+          <p class = "chart-para">
+            Here you can see the distribution of funding to the different areas
+            in Gwent.
+          </p>
+        </div>
+        <div><canvas id="funding" width="700" height="400"></canvas></div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="static/javascript/funding.js"></script>
+        <!--Oliver-->
+        <div class = "chart-info">
+            <h1 class = "chart-title">Wealth inequalities in Gwent</h1>
+            <p class = "chart-para">
+              This chart was added to illustrate the vast wealth inequalities
+              across the area of Gwent.
+            </p>
+        </div>
+
+        <div class = "bar-chart">
+            <canvas id="barChart" width="800vh" height="500vw"></canvas>
+        </div>
+
+        <!--Eric-->
+        <div class="chart-info">
+            <h1 class="chart-title">Number of charities funded by location</h1>
+            <p class="chart-para">
+              This graph shows the number of charities supported in the local area
+              by totaling the frequency of charities funded in each area.
+            </p>
+        </div>
+        <div class="chart">
+            <canvas id="myChart" width="400px" height="600px"></canvas>
+        </div>
+      </section>
+  </article>
+  </div>
+
+  <div class="splitter">
+  </div>
+  <footer class="contact-info">
+    <div class="social-media">
+      <div>
+        <a href="url">Twitter</a>
+      </div>
+      <div>
+        <a href="url">Instagram</a>
+      </div>
+      <div>
+        <a href="url">Facebook</a>
+      </div>
+    </div>
+    <div class="email">
+      <h1>Email Address: gwenthighsheriff@gov.uk</h1>
+    </div>
+    <div class="phone">
+      <h1>Phone Number: 07420192394</h1>
+    </div>
+    <span id="error-message"></span>
+  </footer>
+
+</main>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="static/javascript/hamburger_menu.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+<script id="success-graphs">
+    //Load in Variables
+    charitylocations = []
+    {% for location in charitylocations %}
+            //Variables for geocoding
+            charitylocations.push("{{location|safe}}")
+    {% endfor %}
+
+    for (var i = 0; i < charitylocations.length; i++)
+    {
+      charitylocations[i] = charitylocations[i].replace('(', "")
+      charitylocations[i] = charitylocations[i].replace("'", "")
+      charitylocations[i] = charitylocations[i].replace(')', "")
+      charitylocations[i] = charitylocations[i].replace("'", "")
+      charitylocations[i] = charitylocations[i].replace(",", "")
+      charitylocations[i] = charitylocations[i].replace(",", "")
+    }
+
+    console.log(charitylocations);
+
+    var labels = [...new Set(charitylocations)]
+
+    numOfRepeats = []
+    for (var i = 0; i < charitylocations.length; i++)
+    {
+        numOfRepeats.push(1);
+    }
+
+    function NumOfRepeats(location_list) {
+        for (var i = 0; i < charitylocations.length; i++)
+        {
+          current = charitylocations[i];
+          for (var a = 0; a < charitylocations.length; a++)
+          {
+            console.log(current)
+            console.log(charitylocations[a])
+            if (current === charitylocations[a]){
+              index = charitylocations.indexOf(current);
+              numOfRepeats[index] += 1;
+            }
+          }
+        }
+        return numOfRepeats
+    }
+
+    console.log(NumOfRepeats(charitylocations));
+
+    //Draw graph based on variables from database
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+
+    	type: 'line', // Use a graph type of line
+
+    	// The data for our dataset
+    	data: {
+    		labels: labels,
+    		// Information about the dataset
+        datasets: [{
+    			label: 'Number Of Supported',
+    			backgroundColor: 'lightblue',
+    			borderColor: 'royalblue',
+    			data: numOfRepeats,
+    		}]
+    	},
+
+    	// Configuration options
+    	options: {
+    		legend: {
+    			position: 'bottom',
+    		},
+    		title: {
+    			display: true,
+    			text: 'Frequency Of Charities Supported By Location'
+    		},
+    		scales: {
+    			yAxes: [{
+    				scaleLabel: {
+    					display: true,
+    					labelString: 'Frequency Of Charities Supported',
+    				},
+            ticks: {
+              beginAtZero: true
+            }
+    			}],
+    			xAxes: [{
+    				scaleLabel: {
+    					display: true,
+    					labelString: 'Locations'
+    				},
+            ticks: {
+              autoSkip: false // makes all x-labels viewable
+            }
+    			}]
+    		}
+    	}
+    });
+</script>
+<script>
+  //Draw Map
+  var map = L.map('map').setView([51.505, -0.09], 13);
+  //Create the title layer that displays the tiles of the map, taken from API.
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: 'pk.eyJ1IjoiYzIxMDQwMjQ1LW1hcHMiLCJhIjoiY2t3cTh5NzJuMGthaDJwcW80eWxjYmxkcyJ9.W7KS5Opz_McOnpPOupQRsw'
+  }).addTo(map); //Add the layer to the map
+  map.setView([51.703594,-3.184146], 9) //Set the base view of the map
+  var marker = L.marker([51.58774,  -2.99835]).bindTooltip("Simon",
+  {
+      permanent: true,
+      direction: 'right'
+  }); //Create a new test marker to check map works
+
+  //Place charity names from database into a javascript list
+  charityNames = []
+  {% for charity in charities %}
+          //Variables for name on pin
+          charityNames.push("{{charity|safe}}")
+  {% endfor %}
+
+  //Place charity descriptions from database into a javascript list
+  charityDesc = []
+  {% for description in descriptions %}
+          //Variables for description on pin
+          charityDesc.push("{{description|safe}}")
+  {% endfor %}
+
+  //Place locations and geocodes from database into a javascript list
+  locationNames = []
+
+  {% for location in locations %}
+          //Variables for location geocode
+          locationNames.push("{{location[0]|safe}}","{{location[1]|safe}}","{{location[2]|safe}}")
+  {% endfor %}
+
+  //Place charity location from database into a javascript list
+  charitylocations = []
+
+  {% for location in charitylocations %}
+          //Variables for geocoding
+          charitylocations.push("{{location|safe}}")
+  {% endfor %}
+
+  //Location name formatting
+  for (var i = 0; i < locationNames.length; i++)
+  {
+    locationNames[i][0] = locationNames[i][0].replace('(', "")
+    locationNames[i][0] = locationNames[i][0].replace("'", "")
+    locationNames[i][0] = locationNames[i][0].replace(')', "")
+    locationNames[i][0] = locationNames[i][0].replace("'", "")
+    locationNames[i][0] = locationNames[i][0].replace(",", "")
+    locationNames[i][0] = locationNames[i][0].replace(",", "")
+  }
+
+  //Charity name formatting
+  for (var i = 0; i < charityNames.length; i++)
+  {
+    charityNames[i] = charityNames[i].replace('(', "")
+    charityNames[i] = charityNames[i].replace("'", "")
+    charityNames[i] = charityNames[i].replace(')', "")
+    charityNames[i] = charityNames[i].replace("'", "")
+    charityNames[i] = charityNames[i].replace(",", "")
+    charityNames[i] = charityNames[i].replace(",", "")
+  }
+
+  //Charity locations formatting
+  for (var i = 0; i < charitylocations.length; i++)
+  {
+    charitylocations[i] = charitylocations[i].replace('(', "")
+    charitylocations[i] = charitylocations[i].replace("'", "")
+    charitylocations[i] = charitylocations[i].replace(')', "")
+    charitylocations[i] = charitylocations[i].replace("'", "")
+    charitylocations[i] = charitylocations[i].replace(",", "")
+    charitylocations[i] = charitylocations[i].replace(",", "")
+  }
+
+  //Descriptions formatting
+  for (var i = 0; i < charityDesc.length; i++)
+  {
+    charityDesc[i] = charityDesc[i].replace('(', "")
+    charityDesc[i] = charityDesc[i].replace("'", "")
+    charityDesc[i] = charityDesc[i].replace(')', "")
+    charityDesc[i] = charityDesc[i].replace("'", "")
+    charityDesc[i] = charityDesc[i].replace(",", "")
+    charityDesc[i] = charityDesc[i].replace(",", "")
+  }
+
+  //Keys needed for API to work
+  const APPLICATION_ID = "8ff6a0df";
+  const API_KEY = "5b14f6a895297baf0f5092ddb5135bb3";
+
+  // Get charity names and descriptions and place them on the map using
+  // geo-cordinates taken from a location list containing the geocodes.
+  for (var i = 0; i < charityNames.length; i++)
+   {
+          indexLocation = locationNames.indexOf(charitylocations[i])
+          var latLng = L.latLng(locationNames[indexLocation + 1], locationNames[indexLocation + 2])
+          var marker = L.marker(latLng).bindTooltip(charityNames[i],
+               {
+                   permanent: true,
+                   direction: 'right'
+               });
+          marker.addTo(map);
+          marker.bindPopup(charityDesc[i]);
+    };
+</script>
+<script>
+// Data for the bar chart - sourced from:
+// https://www.plumplot.co.uk/Newport-salary-and-unemployment.html#:~:text=The%20area%20with%20the%20highest%20average%20net%20income,Hamlets%20033%2C%20%C2%A393.8k%29.%20Newport%20relative%20housing%20costs%20map
+// Date: 12/12/2021
+
+var xVal = ["Newport", "Monmouthshire", "Torfaen", "Caerphilly", "Blaenau Gwent", "United Kingdon"];
+var yVal = [29800, 31500, 33100, 33200, 34800, 38100];
+
+// Draws the bar chart
+new Chart("barChart", {
+  // Bar chart
+  type: "bar",
+  // Sets the data that will be displayed on each axis of the graph
+  data: {
+    labels: xVal,
+    datasets: [{
+      backgroundColor: 'rgba(99, 90, 210, 0.2)',
+      borderColor: 'rgba(99, 90, 210, 1)',
+      borderWidth: 1,
+      data: yVal
+    }]
+  },
+  options: {
+    // Hides the legend box above the graph
+    legend: {display: false},
+    // Adds labels to each axis
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "Average Income (£)"
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "Location"
+        }
+      }]
+    },
+    // Adds title to the graph
+    title: {
+      display: true,
+      text: "Average Income Across Gwent, Compared To The UK Average"
+    }
+  }
+});
+</script>
+{%endblock%}

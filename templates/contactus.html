@@ -1,0 +1,34 @@
+{% extends 'navbar.html' %}
+{% block headerBlock %}
+<title>Contact Us</title>
+<link rel="stylesheet" href="static/contactus.css">
+{% endblock %}
+{% block mainBlock%}
+<main>
+  <h1>Please contact us if you have an enquiry:</h1>
+  <h2>Type underneath</h2>
+  <form id="contact-form" onsubmit="return sendContact()" method="post">
+    <label class="name">
+      Please enter your full name:
+      <input id="name" type="text" name="fullname" placeholder="Full Name" required></input>
+    </label>
+    <label class="email">
+      Please enter your email:
+      <input id="email" type="email" name="email" placeholder="Email Address" required></input>
+    </label>
+    <label class="message">
+      Please enter your message:
+      <textarea id="message" type="textarea" name="message" placeholder="Type here"></textarea>
+    </label>
+    <div class="buttoncontainer">
+      <button type="submit">Send</button>
+    </div>
+  </form>
+  <div class="buttoncontainer">
+    <button type="button"><a class="a-remove" href="/">Back Home</a></button>
+  </div>
+  <span id="confirmation"></span>
+</main>
+<script src="static/javascript/hamburger_menu.js"></script>
+<script src="static/javascript/sendContact.js"></script>
+{% endblock %}

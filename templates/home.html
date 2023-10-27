@@ -1,0 +1,84 @@
+{% extends 'flashNotification.html' %}
+{% block headerBlock %}
+  <title>Home</title>
+  <link rel="stylesheet" href="static/home.css">
+  <link rel="stylesheet" href="static/about.css">
+{% endblock %}
+{% block mainBlock%}
+
+  <body>
+    <div class="bg">
+      <div class="front-text-container" style="border-top-left-radius:15px; border-top-right-radius:15px">
+        <h1 class="front-text">Welcome to the office of the High Sheriff of Gwent</h1>
+      </div>
+      <div class="front-text-container" id="arrow-container" style="border-bottom-left-radius:15px; border-bottom-right-radius:15px">
+        <a href="#scroll-1" class="anchor-arrow">↓</a>
+      </div>
+    </div>
+
+    <div class="bg2">
+        <h1 class="front-text" id="scroll-1">Current high sheriff: </h1>
+        <h2 class="front-text" id="person">Professor Simon Gibson CBE DSc DL</h2>
+        <p class="front-text" id="simon-info">
+          Simon is Chairman of the Alacrity Graduate Entrepreneurship Foundation and
+          Chief Executive of Wesley Clover Corporation.  Before joining
+          Wesley Clover, he was co-founder, President and CEO of Ubiquity
+          Software Corporation.
+        </p>
+        <img class="headshot-img" src="static\images\Simon_Gibson.jpg">
+        <a href="#scroll-2" class="anchor-arrow front-text">↓</a>
+    </div>
+    <div class="bg3">
+      <h1 class="front-text" id="scroll-2">Our pages: </h1>
+      <div class="page-container">
+        <img class="img-right" src="static\images\About_Us.jpg">
+        <p class="para">Find out more information about the sheriff and his vison and some of
+          the success stories he helped build.</p>
+        <h2 class="side-text" id="page-link"><a href="/about">About</a></h2>
+      </div>
+      <div class="page-container page-container-admin">
+        <img class="img-right" src="static\images\Admin.jpg">
+        <p class="para">For the admin staff to review, edit, delete and approve.The
+        admin can make dreams come true.</p>
+        <h2 class="side-text" id="page-link"><a href="/admin">Admin</a></h2>
+      </div>
+      <div class="page-container">
+        <img class="img-right" src="static\images\Applications.jpg">
+        <p class="para">Applications are avaliable from the page click on application to see all submissions.</p>
+        <h2 class="side-text" id="page-link"><a href="/applications">Apply</a></h2>
+      </div>
+      <div class="page-container">
+        <img class="img-right" src="static\images\Donations.jpg">
+        <p class="para">See all charities and choose how much you would like to donate
+          to the charity.</p>
+        <h2 class="side-text" id="page-link"><a href="/donations">Donate</a></h2>
+      </div>
+      <div class="front-text-container" id="arrow-container" style="border-bottom-left-radius:15px; border-bottom-right-radius:15px">
+        <a href="#scroll-4" class="anchor-arrow front-text" id="anchor-arrow-1">↓</a>
+      </div>
+    </div>
+    <div class="bg2">
+      <h1 class="front-text" id="scroll-4">Our social media: </h1>
+      <div class="twitter-container">
+        <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/Simonjohngibson?ref_src=twsrc%5Etfw">Tweets by Simonjohngibson</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+    <footer class="contact-info">
+      <div class="social-media">
+        <div>
+          <h4><a href="/about" class="contact">About</a></h4>
+        </div>
+        <div>
+          <h4><a href="/applications" class="contact">Applications</a></h4>
+        </div>
+        <div>
+          <h4><a href="/contact" class="contact">Contact Us</a></h4>
+        </div>
+      </div>
+
+    </footer>
+  </body>
+  <script src="static\javascript\hamburger_menu.js"></script>
+
+{%endblock%}

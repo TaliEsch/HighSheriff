@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/navbar.css">
+  <link rel="stylesheet" href="static/login.css">
+  {% block headerBlock %}
+  {% endblock %}
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <a href="/" class="nav-logo">High Sheriff Of Gwent</a>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="/" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="/about" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="/donations" class="nav-link">Donations</a>
+        </li>
+        <li class="nav-item">
+          <a href="/applications" class="nav-link">Applications</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="/admin" class="nav-link" >Admin</a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+  {% block flash %}
+  {% endblock %}
+  {% block mainBlock %}
+  {% endblock %}
+</body>
+</html>

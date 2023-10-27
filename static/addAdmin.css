@@ -1,0 +1,36 @@
+
+h2, p{
+  font-size: 2rem;
+}
+
+form{
+  display: inline-grid;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+label{
+  padding: 2rem;
+}
+
+button{
+  height: auto;
+  width: 20rem;
+}
+
+button:hover{
+  height: auto;
+  cursor: pointer;
+  width: 25rem;
+}
+
+/* ADMIN INTRO SECTION */
+
+#admin-intro {
+  display: grid;
+  padding-top: 2rem;
+}
+
+p{
+  padding-top: 1rem;
+}

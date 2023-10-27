@@ -1,0 +1,18 @@
+{% extends 'navbar.html' %}
+<!DOCTYPE html>
+{% block headerBlock %}
+{% endblock %}
+{% block content %}
+  {% block flash %}
+    <div class="notification">
+      <div class="flash">
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endblock %}
+{% endblock %}
+{% block mainBlock %}
+{% endblock %}
+

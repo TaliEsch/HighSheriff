@@ -1,0 +1,70 @@
+{% extends 'navbar.html' %}
+{% block headerBlock %}
+<title>Applications</title>
+<link rel="stylesheet" href="static/applications.css">
+{% endblock %}
+{% block mainBlock %}
+  <main>
+    <article id="application-intro">
+      <h3>There are two options:</h3>
+      <p>
+        You can either choose to fill out the written form, or you can submit a video application.<br>
+        For the video application, please use the questions given below. Some questions have <br>
+        suggested time limits, but these do not have to be strictly adhered to.
+      </p>
+    </article>
+    <section id="video-section">
+      <ul>
+        <li>What is the name of your charity?</li>
+        <li>What is your charity involved with? (2 mins)</li>
+        <li>Why do you think your charity should be given funding? (2-5 mins)</li>
+        <li>Where is your charity based?</li>
+        <li>How many people are working/volunteering for your charity currently?</li>
+      </ul>
+      <br>
+      <form id="upload-form" name="upload-form" action="/applications/upload" onsubmit="return sendUpload()" method="post" enctype="multipart/form-data">
+        <label class="required" for="uploadFirstName">First Name</label><br>
+        <input required type="text" name="uploadFirstName" id="uploadFirstName" maxlength="20"><br>
+        <label class="required" for="uploadSurname">Surname</label><br>
+        <input required type="text" name="uploadSurname" id="uploadSurname" maxlength="30"><br>
+        <label class="required" for="uploadEmail">Email</label><br>
+        <input required type="email" name="uploadEmail" id="uploadEmail"><br>
+        <label for="upload-app-file">File Upload</label><br>
+        <input type="file" name="uploadAppFile" id="uploadAppFile">
+        <button type="submit">Upload</button><br>
+        <span id="upload-accepted"></span>
+      </form>
+    </section>
+    <div id="divider"></div>
+    <section id="text-section">
+      <form id="application-form" onsubmit="return sendApplication()" method="post">
+        <div class="form-container">
+          <label class="required" for="firstName">First Name</label>
+          <input required type="text" name="firstName" id="firstName" maxlength="20">
+          <label class="required" for="surname">Surname</label>
+          <input required type="text" name="surname" id="surname" maxlength="30">
+          <label class="required" for="email">Email</label>
+          <input required type="email" name="email" id="email">
+          <label class="required" for="question1">What is the name of your charity?</label>
+          <input required type="text" name="question1" id="question1">
+          <label class="required" for="question2">What is your charity involved with?</label>
+          <textarea required name="question2" id="question2" cols="50" rows="10"></textarea>
+          <label class="required" for="question3">Why do you think your charity should be given funding?</label>
+          <textarea required name="question3" id="question3" cols="50" rows="10"></textarea>
+          <label class="required" for="question4">Where is your charity based?</label>
+          <select required name="question4" id="question4">
+            {% for location in locations %}
+              <option value="{{location[0]}}">{{location[0]}}</option>
+            {% endfor %}
+          </select>
+          <label class="required" for="question5">How many people are working/volunteering for your charity currently?</label>
+          <input required type="number" name="question5" id="question5">
+          <button type="submit">Submit</button>
+          <span id="text-accepted"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="static/javascript/sendApplication.js"></script>
+  <script src="static/javascript/hamburger_menu.js"></script>
+{% endblock %}
